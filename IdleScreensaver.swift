@@ -260,7 +260,7 @@ struct AreYouStillHereView: View {
                     .frame(width: ringSize, height: ringSize)
                 }
 
-                Text("Tap anyware to continue explore")
+                Text("Touch the screen to continue")
                     .font(.footnote)
                     .foregroundStyle(Theme.secondaryText)
             }

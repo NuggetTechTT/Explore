@@ -107,26 +107,28 @@ struct HomeView: View {
     /// Name of the photo in Assets.xcassets (drag iPhone15ProHero.png into the asset catalog).
     private static let heroImageName = "iPhone15ProHero"
 
-    /// HERO SIZE: 1.0 = the original size, smaller number = smaller picture (0.8 = 80%, 0.7 = 70% ...).
-    private static let heroScale: CGFloat = 0.9
+    /// How wide the phone is, as a fraction of the screen width (1.0 = edge to edge).
+    /// Lower = smaller phone, higher = bigger.
+    private static let heroScale: CGFloat = 0.93
 
     private var hero: some View {
         GeometryReader { geo in
             Group {
                 if let photo = UIImage(named: Self.heroImageName) {
-                    // Real photo, full width, top of the phone with the camera system
+                    // Real photo, top of the phone with the camera system, centered
+                    let photoWidth = geo.size.width * Self.heroScale
                     Image(uiImage: photo)
                         .resizable()
                         .frame(
-                            width: geo.size.width,
-                            height: geo.size.width * photo.size.height / photo.size.width
+                            width: photoWidth,
+                            height: photoWidth * photo.size.height / photo.size.width
                         )
                 } else {
                     // Fallback: the phone drawn in SwiftUI
                     PhoneBack(base: model.colors[0].color)
                         .frame(
-                            width: geo.size.width * 0.82,
-                            height: geo.size.width * 0.82 * PhoneBack.aspect
+                            width: geo.size.width * Self.heroScale,
+                            height: geo.size.width * Self.heroScale * PhoneBack.aspect
                         )
                 }
             }
@@ -146,8 +148,6 @@ struct HomeView: View {
         }
         .frame(maxHeight: .infinity)
         .ignoresSafeArea(edges: .bottom)
-        // Shrinks the picture (and its fade) toward the bottom edge. Use .top or .center to shrink toward another spot.
-        .scaleEffect(Self.heroScale, anchor: .bottom)
     }
 
     private func go(_ route: Route) {

@@ -6,46 +6,50 @@ import Darwin
 
 enum SettingsDefaults {
     static let experiences = [
-        "Product Zone - iPhone"
+        "Product Zone - iPhone",
+        "Product Zone - iPad",
+        "Product Zone - Mac",
+        "Product Zone - Apple Watch"
     ]
     static let experience = "Product Zone - iPhone"
     static let appLaunch  = "com.apple.ist.DemoDiscoveryApp"
     static let xid        = "10011"
     static let appVersion = "2.0.737"
-    static let store      = "Vil's Apple Store"
+    static let store      = "R245"
 }
 
 enum SettingsKeys {
+    static let enrollment         = "settings.enrollment"
     static let experience         = "settings.experience"
     static let appLaunch          = "settings.appLaunch"
-    static let exploreMode        = "settings.exploreMode"
+    static let autoReset          = "settings.policy.autoReset"
+    static let idleTimeout        = "settings.policy.idleTimeout"
+    static let singleApp          = "settings.security.singleApp"
+    static let blockNotifications = "settings.security.blockNotifications"
 
-    static let all = [experience, appLaunch, exploreMode]
+    static let all = [enrollment, experience, appLaunch, autoReset, idleTimeout, singleApp, blockNotifications]
 }
 
 enum SettingsRoute: Hashable {
-    case experience, exploreMode, appLaunch
+    case enrollment, experience, appLaunch, policies, security
 }
 
-// MARK: - Explore Mode
+// MARK: - Enrollment status
 
-enum ExploreMode: String, CaseIterable, Identifiable {
-    case standalone = "Standalone"
-    case demoUnit   = "DemoUnit"
+enum EnrollmentStatus: String, CaseIterable, Identifiable {
+    case enrolled
+    case notEnrolled
 
     var id: String { rawValue }
 
-    var detail: String {
-        switch self {
-        case .standalone: return "Without DemoLoop app"
-        case .demoUnit:   return "With DemoLoop app"
-        }
+    var title: String {
+        self == .enrolled ? "Enrolled" : "Not enrolled"
     }
 
-    /// The mode that is saved right now (Standalone until you choose otherwise).
-    static var current: ExploreMode {
-        let saved = UserDefaults.standard.string(forKey: SettingsKeys.exploreMode) ?? ""
-        return ExploreMode(rawValue: saved) ?? .standalone
+    var color: Color {
+        self == .enrolled
+            ? Color(red: 0.20, green: 0.78, blue: 0.35)   // green
+            : Color(red: 1.00, green: 0.62, blue: 0.04)   // orange
     }
 }
 
@@ -74,7 +78,7 @@ enum DeviceInfo {
 // MARK: - Look
 
 enum SettingsTheme {
-    static let background = Color(red: 0.90, green: 0.90, blue: 0.90)   // soft lavender like the photo
+    static let background = Color(red: 0.87, green: 0.84, blue: 0.96)   // soft lavender like the photo
     static let row        = Color.white.opacity(0.60)
 }
 
@@ -91,9 +95,9 @@ extension View {
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
 
+    @AppStorage(SettingsKeys.enrollment) private var enrollment: EnrollmentStatus = .enrolled
     @AppStorage(SettingsKeys.experience) private var experience = SettingsDefaults.experience
     @AppStorage(SettingsKeys.appLaunch)  private var appLaunch  = SettingsDefaults.appLaunch
-    @AppStorage(SettingsKeys.exploreMode) private var exploreMode = ExploreMode.standalone.rawValue
 
     @State private var path: [SettingsRoute] = []
     @State private var confirmQuit = false
@@ -103,23 +107,51 @@ struct SettingsView: View {
         NavigationStack(path: $path) {
             List {
                 Section {
+                    NavigationLink(value: SettingsRoute.enrollment) {
+                        HStack(spacing: 12) {
+                            Text("Enroll Status")
+                                .foregroundStyle(.primary)
+                            Spacer(minLength: 8)
+                            HStack(spacing: 6) {
+                                Circle()
+                                    .fill(enrollment.color)
+                                    .frame(width: 9, height: 9)
+                                Text(enrollment.title)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Explore Mode")
+                }
+                .listRowBackground(SettingsTheme.row)
+
+                Section {
                     NavigationLink(value: SettingsRoute.experience) {
                         ValueRow(title: "Experience", value: experience)
                     }
 
-                    NavigationLink(value: SettingsRoute.exploreMode) {
-                        ValueRow(title: "Explore Mode", value: exploreMode)
+                    Button {
+                        path.append(.appLaunch)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("App Launch")
+                                .foregroundStyle(.primary)
+                            Text(appLaunch)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                     }
 
-                    // Plain row (not a button): nothing happens when it is tapped.
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("App Launch")
-                            .foregroundStyle(.primary)
-                        Text(appLaunch)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                    NavigationLink(value: SettingsRoute.policies) {
+                        Text("Policies")
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    NavigationLink(value: SettingsRoute.security) {
+                        Text("Device Security")
+                    }
 
                     ValueRow(title: "XID", value: SettingsDefaults.xid)
                     ValueRow(title: "App Version", value: SettingsDefaults.appVersion)
@@ -151,9 +183,11 @@ struct SettingsView: View {
             }
             .navigationDestination(for: SettingsRoute.self) { route in
                 switch route {
-                case .experience:  ExperiencePicker(selection: $experience)
-                case .exploreMode: ExploreModePicker(selection: $exploreMode)
-                case .appLaunch:   AppLaunchEditor(bundleID: $appLaunch)
+                case .enrollment: EnrollmentPicker(selection: $enrollment)
+                case .experience: ExperiencePicker(selection: $experience)
+                case .appLaunch:  AppLaunchEditor(bundleID: $appLaunch)
+                case .policies:   PoliciesView()
+                case .security:   DeviceSecurityView()
                 }
             }
             .confirmationDialog("Quit Application?", isPresented: $confirmQuit, titleVisibility: .visible) {
@@ -199,6 +233,43 @@ private struct ValueRow: View {
 
 // MARK: - Detail screens
 
+private struct EnrollmentPicker: View {
+    @Binding var selection: EnrollmentStatus
+
+    var body: some View {
+        List {
+            Section {
+                ForEach(EnrollmentStatus.allCases) { option in
+                    Button {
+                        Haptics.select()
+                        selection = option
+                    } label: {
+                        HStack(spacing: 10) {
+                            Circle()
+                                .fill(option.color)
+                                .frame(width: 10, height: 10)
+                            Text(option.title)
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            if option == selection {
+                                Image(systemName: "checkmark")
+                                    .fontWeight(.semibold)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                }
+            } footer: {
+                Text("The status is shown at the top of the Explore screen.")
+            }
+            .listRowBackground(SettingsTheme.row)
+        }
+        .settingsStyle()
+        .navigationTitle("Enroll Status")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
 private struct ExperiencePicker: View {
     @Binding var selection: String
 
@@ -230,45 +301,6 @@ private struct ExperiencePicker: View {
     }
 }
 
-private struct ExploreModePicker: View {
-    @Binding var selection: String
-
-    var body: some View {
-        List {
-            Section {
-                ForEach(ExploreMode.allCases) { mode in
-                    Button {
-                        Haptics.select()
-                        selection = mode.rawValue
-                    } label: {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(mode.rawValue)
-                                    .foregroundStyle(.primary)
-                                Text(mode.detail)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            if mode.rawValue == selection {
-                                Image(systemName: "checkmark")
-                                    .fontWeight(.semibold)
-                            }
-                        }
-                        .contentShape(Rectangle())
-                    }
-                }
-            } footer: {
-                Text("DemoUnit turns off Explore's own screen saver, because the DemoLoop app handles it.")
-            }
-            .listRowBackground(SettingsTheme.row)
-        }
-        .settingsStyle()
-        .navigationTitle("Explore Mode")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
 private struct AppLaunchEditor: View {
     @Binding var bundleID: String
 
@@ -296,6 +328,55 @@ private struct AppLaunchEditor: View {
         }
         .settingsStyle()
         .navigationTitle("App Launch")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct PoliciesView: View {
+    @AppStorage(SettingsKeys.autoReset)   private var autoReset = true
+    @AppStorage(SettingsKeys.idleTimeout) private var idleTimeout = 60
+
+    var body: some View {
+        List {
+            Section {
+                Toggle("Reset after inactivity", isOn: $autoReset)
+
+                if autoReset {
+                    Picker("Inactivity timeout", selection: $idleTimeout) {
+                        Text("30 seconds").tag(30)
+                        Text("1 minute").tag(60)
+                        Text("2 minutes").tag(120)
+                        Text("5 minutes").tag(300)
+                    }
+                    .pickerStyle(.menu)
+                }
+            } footer: {
+                Text("Placeholder options for this demo. They don't change anything yet.")
+            }
+            .listRowBackground(SettingsTheme.row)
+        }
+        .settingsStyle()
+        .navigationTitle("Policies")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct DeviceSecurityView: View {
+    @AppStorage(SettingsKeys.singleApp)          private var singleApp = false
+    @AppStorage(SettingsKeys.blockNotifications) private var blockNotifications = true
+
+    var body: some View {
+        List {
+            Section {
+                Toggle("Single-app mode", isOn: $singleApp)
+                Toggle("Block notifications", isOn: $blockNotifications)
+            } footer: {
+                Text("Placeholder options for this demo. They don't change anything yet.")
+            }
+            .listRowBackground(SettingsTheme.row)
+        }
+        .settingsStyle()
+        .navigationTitle("Device Security")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

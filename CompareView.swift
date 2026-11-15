@@ -113,10 +113,8 @@ private struct ModelColumn: View {
     @ViewBuilder
     private var picture: some View {
         if let first = model.colors.first, let photo = ModelPhotos.image(model: model, color: first) {
-            Image(uiImage: photo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 84)
+            FadedPhoto(image: photo)
+                .frame(height: 96)
                 .id(ModelPhotos.name(model: model, color: first))
                 .transition(.opacity)
         } else {

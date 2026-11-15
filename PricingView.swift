@@ -22,6 +22,9 @@ struct PricingView: View {
         TradeIn(id: "11",    name: "iPhone 11",     credit: 100)
     ]
 
+    /// How far (in points) the phone photo sits higher. Raise for higher, lower for less.
+    private static let photoLift: CGFloat = 0
+
     @State private var model = PhoneModel.iPhone15Pro
     @State private var storageIndex = 0
     @State private var colorIndex = 0
@@ -84,7 +87,7 @@ struct PricingView: View {
                         }
                     } label: {
                         HStack(spacing: 6) {
-                            Image(systemName: option.symbol)
+                            Image(systemName: "iphone")
                                 .font(.system(size: 14, weight: .medium))
                             Text(option.name)
                                 .font(.subheadline.weight(.semibold))
@@ -108,8 +111,9 @@ struct PricingView: View {
     }
 
     private var preview: some View {
-        VStack(spacing: 14) {
-            previewPicture
+        VStack(spacing: 8) {
+            ModelPhoto(model: model, finish: finish, width: 280, visibleHeight: 215)
+                .padding(.top, -Self.photoLift)   // raise the photo a little
 
             VStack(spacing: 4) {
                 Text(model.name)
@@ -122,49 +126,6 @@ struct PricingView: View {
         }
         .frame(maxWidth: .infinity)
         .animation(.easeInOut(duration: 0.35), value: finish.id)
-    }
-
-    /// The real photo for this model and color. If there is no photo, the old drawn picture is used.
-    @ViewBuilder
-    private var previewPicture: some View {
-        if let photo = ModelPhotos.image(model: model, color: finish) {
-            Image(uiImage: photo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-                .shadow(color: Color.black.opacity(0.45), radius: 24, x: 0, y: 14)
-                .id(ModelPhotos.name(model: model, color: finish))
-                .transition(.opacity)
-        } else {
-            drawnPicture
-        }
-    }
-
-    private var drawnPicture: some View {
-        VStack(spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 38, style: .continuous)
-                    .fill(finish.color)
-                    .overlay {
-                        LinearGradient(
-                            colors: [Color.white.opacity(0.28), Color.clear, Color.black.opacity(0.30)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 38, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 38, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.18), lineWidth: 1)
-                    }
-                    .shadow(color: finish.color.opacity(0.55), radius: 30, x: 0, y: 12)
-
-                Image(systemName: model.symbol)
-                    .font(.system(size: 84, weight: .light))
-                    .foregroundStyle(finish.color.isLight ? Color.black.opacity(0.75) : Color.white)
-            }
-            .frame(width: 160, height: 160)
-        }
     }
 
     private var colorSection: some View {

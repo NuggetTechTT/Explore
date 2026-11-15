@@ -83,6 +83,13 @@ struct PhoneModel: Identifiable, Hashable {
 
     var startingPrice: Int { storage.map(\.price).min() ?? 0 }
 
+    /// Number of rear cameras, worked out from the specs (3 = Pro, 2 = standard, 1 = SE).
+    var cameraCount: Int {
+        if let tele = specs[.telephoto], tele != "—" { return 3 }
+        if let wide = specs[.ultraWide], wide != "—" { return 2 }
+        return 1
+    }
+
     static func == (lhs: PhoneModel, rhs: PhoneModel) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
 }
@@ -123,7 +130,6 @@ extension PhoneModel {
     static let standard14Colors: [ColorOption] = [
         ColorOption(id: "blue",     name: "Blue",     color: Color(red: 0.62, green: 0.74, blue: 0.86)),
         ColorOption(id: "purple",   name: "Purple",   color: Color(red: 0.78, green: 0.73, blue: 0.88)),
-        ColorOption(id: "yellow",   name: "Yellow",   color: Color(red: 0.97, green: 0.90, blue: 0.45)),
         ColorOption(id: "midnight", name: "Midnight", color: Color(red: 0.14, green: 0.16, blue: 0.20)),
         ColorOption(id: "starlight", name: "Starlight", color: Color(red: 0.93, green: 0.91, blue: 0.87)),
         ColorOption(id: "red",      name: "(PRODUCT)RED", color: Color(red: 0.75, green: 0.08, blue: 0.13))

@@ -14,19 +14,21 @@
 		A03907AE3096FFFB0048AB1E /* ExploreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03907AD3096FFFB0048AB1E /* ExploreUITestsLaunchTests.swift */; };
 		A068B4D4309972FD00A835FA /* SettingsTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068B4D3309972FD00A835FA /* SettingsTrigger.swift */; };
 		A068B4D63099730400A835FA /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068B4D53099730300A835FA /* LaunchAnimation.swift */; };
-		A0FBA4513097C816002B52BE /* PhoneArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA4493097C815002B52BE /* PhoneArt.swift */; };
+		A06F09F6309A7F260047FC92 /* Explore_Load.mov in Resources */ = {isa = PBXBuildFile; fileRef = A06F09F5309A7F260047FC92 /* Explore_Load.mov */; };
+		A06F09F8309A81E60047FC92 /* ModelPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F09F7309A81E60047FC92 /* ModelPhotos.swift */; };
+		A06F09FA309A81F70047FC92 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F09F9309A81F70047FC92 /* CompareView.swift */; };
+		A085400A30A95A97001D6981 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085400930A95A97001D6981 /* Theme.swift */; };
+		A085400C30A95AAC001D6981 /* ExploreiPhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085400B30A95AAC001D6981 /* ExploreiPhoneApp.swift */; };
+		A085400E30A95E68001D6981 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085400D30A95E68001D6981 /* SettingsView.swift */; };
+		A085401430A95E7D001D6981 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085401330A95E7D001D6981 /* Models.swift */; };
+		A085401630A95F52001D6981 /* ExploreMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085401530A95F52001D6981 /* ExploreMode.swift */; };
+		A085403230A96F45001D6981 /* PhoneArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085403130A96F45001D6981 /* PhoneArt.swift */; };
+		A085403430A96F4D001D6981 /* PricingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085403330A96F4D001D6981 /* PricingView.swift */; };
+		A085403630A97013001D6981 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085403530A97013001D6981 /* HomeView.swift */; };
 		A0FBA4543097C816002B52BE /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA44C3097C815002B52BE /* FeaturesView.swift */; };
-		A0FBA4593097D580002B52BE /* ExploreiPhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA4583097D57F002B52BE /* ExploreiPhoneApp.swift */; };
-		A0FBA45E3097D592002B52BE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA45B3097D591002B52BE /* Theme.swift */; };
-		A0FBA4693098089F002B52BE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA4663098089F002B52BE /* HomeView.swift */; };
 		A0FBA474309820B3002B52BE /* demoloop in Resources */ = {isa = PBXBuildFile; fileRef = A0FBA473309820B3002B52BE /* demoloop */; };
 		A0FBA47E3098349D002B52BE /* ExploreNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA47C3098349D002B52BE /* ExploreNotification.swift */; };
 		A0FBA480309968F5002B52BE /* ModelPhotos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FBA47F309968F5002B52BE /* ModelPhotos.xcassets */; };
-		A0FBA48230996928002B52BE /* ModelPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA48130996928002B52BE /* ModelPhotos.swift */; };
-		A0FBA4843099693F002B52BE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA4833099693F002B52BE /* Models.swift */; };
-		A0FBA4863099695C002B52BE /* PricingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA4853099695B002B52BE /* PricingView.swift */; };
-		A0FBA48830996963002B52BE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA48730996963002B52BE /* SettingsView.swift */; };
-		A0FBA48A309969BB002B52BE /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA489309969BB002B52BE /* CompareView.swift */; };
 		A0FBA48C30996A95002B52BE /* IdleScreensaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBA48B30996A95002B52BE /* IdleScreensaver.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,20 +60,22 @@
 		A03907AD3096FFFB0048AB1E /* ExploreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A068B4D3309972FD00A835FA /* SettingsTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTrigger.swift; sourceTree = "<group>"; };
 		A068B4D53099730300A835FA /* LaunchAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
+		A06F09F5309A7F260047FC92 /* Explore_Load.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Explore_Load.mov; sourceTree = "<group>"; };
+		A06F09F7309A81E60047FC92 /* ModelPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelPhotos.swift; sourceTree = "<group>"; };
+		A06F09F9309A81F70047FC92 /* CompareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		A085400930A95A97001D6981 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		A085400B30A95AAC001D6981 /* ExploreiPhoneApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreiPhoneApp.swift; sourceTree = "<group>"; };
+		A085400D30A95E68001D6981 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A085401330A95E7D001D6981 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A085401530A95F52001D6981 /* ExploreMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreMode.swift; sourceTree = "<group>"; };
+		A085403130A96F45001D6981 /* PhoneArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneArt.swift; sourceTree = "<group>"; };
+		A085403330A96F4D001D6981 /* PricingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingView.swift; sourceTree = "<group>"; };
+		A085403530A97013001D6981 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A0FBA4473097C814002B52BE /* Explore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Explore-Bridging-Header.h"; sourceTree = "<group>"; };
-		A0FBA4493097C815002B52BE /* PhoneArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneArt.swift; sourceTree = "<group>"; };
 		A0FBA44C3097C815002B52BE /* FeaturesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
-		A0FBA4583097D57F002B52BE /* ExploreiPhoneApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreiPhoneApp.swift; path = ../../../Downloads/files/ExploreiPhoneApp.swift; sourceTree = "<group>"; };
-		A0FBA45B3097D591002B52BE /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = ../../../Downloads/files/Theme.swift; sourceTree = "<group>"; };
-		A0FBA4663098089F002B52BE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A0FBA473309820B3002B52BE /* demoloop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = demoloop; sourceTree = "<group>"; };
 		A0FBA47C3098349D002B52BE /* ExploreNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreNotification.swift; sourceTree = "<group>"; };
 		A0FBA47F309968F5002B52BE /* ModelPhotos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ModelPhotos.xcassets; sourceTree = "<group>"; };
-		A0FBA48130996928002B52BE /* ModelPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelPhotos.swift; sourceTree = "<group>"; };
-		A0FBA4833099693F002B52BE /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		A0FBA4853099695B002B52BE /* PricingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingView.swift; sourceTree = "<group>"; };
-		A0FBA48730996963002B52BE /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A0FBA489309969BB002B52BE /* CompareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		A0FBA48B30996A95002B52BE /* IdleScreensaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdleScreensaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,14 +111,21 @@
 				A039078F3096FFF80048AB1E /* Explore */,
 				A03907A03096FFFB0048AB1E /* ExploreTests */,
 				A03907AA3096FFFB0048AB1E /* ExploreUITests */,
-				A0FBA4833099693F002B52BE /* Models.swift */,
-				A0FBA4853099695B002B52BE /* PricingView.swift */,
-				A0FBA48730996963002B52BE /* SettingsView.swift */,
 				A0FBA47F309968F5002B52BE /* ModelPhotos.xcassets */,
-				A0FBA489309969BB002B52BE /* CompareView.swift */,
 				A0FBA48B30996A95002B52BE /* IdleScreensaver.swift */,
 				A068B4D3309972FD00A835FA /* SettingsTrigger.swift */,
 				A068B4D53099730300A835FA /* LaunchAnimation.swift */,
+				A06F09F5309A7F260047FC92 /* Explore_Load.mov */,
+				A06F09F7309A81E60047FC92 /* ModelPhotos.swift */,
+				A06F09F9309A81F70047FC92 /* CompareView.swift */,
+				A085400930A95A97001D6981 /* Theme.swift */,
+				A085400B30A95AAC001D6981 /* ExploreiPhoneApp.swift */,
+				A085400D30A95E68001D6981 /* SettingsView.swift */,
+				A085401330A95E7D001D6981 /* Models.swift */,
+				A085401530A95F52001D6981 /* ExploreMode.swift */,
+				A085403130A96F45001D6981 /* PhoneArt.swift */,
+				A085403330A96F4D001D6981 /* PricingView.swift */,
+				A085403530A97013001D6981 /* HomeView.swift */,
 				A039078E3096FFF80048AB1E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,13 +171,8 @@
 				A03907AB3096FFFB0048AB1E /* ExploreUITests.swift */,
 				A03907AD3096FFFB0048AB1E /* ExploreUITestsLaunchTests.swift */,
 				A0FBA44C3097C815002B52BE /* FeaturesView.swift */,
-				A0FBA4493097C815002B52BE /* PhoneArt.swift */,
 				A0FBA4473097C814002B52BE /* Explore-Bridging-Header.h */,
-				A0FBA4583097D57F002B52BE /* ExploreiPhoneApp.swift */,
-				A0FBA45B3097D591002B52BE /* Theme.swift */,
-				A0FBA4663098089F002B52BE /* HomeView.swift */,
 				A0FBA47C3098349D002B52BE /* ExploreNotification.swift */,
-				A0FBA48130996928002B52BE /* ModelPhotos.swift */,
 			);
 			path = ExploreUITests;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0FBA474309820B3002B52BE /* demoloop in Resources */,
+				A06F09F6309A7F260047FC92 /* Explore_Load.mov in Resources */,
 				A03907983096FFFA0048AB1E /* Preview Assets.xcassets in Resources */,
 				A0FBA480309968F5002B52BE /* ModelPhotos.xcassets in Resources */,
 				A03907953096FFFA0048AB1E /* Assets.xcassets in Resources */,
@@ -325,20 +332,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0FBA4843099693F002B52BE /* Models.swift in Sources */,
-				A0FBA4693098089F002B52BE /* HomeView.swift in Sources */,
-				A0FBA4513097C816002B52BE /* PhoneArt.swift in Sources */,
+				A06F09F8309A81E60047FC92 /* ModelPhotos.swift in Sources */,
+				A085400A30A95A97001D6981 /* Theme.swift in Sources */,
 				A068B4D63099730400A835FA /* LaunchAnimation.swift in Sources */,
-				A0FBA4593097D580002B52BE /* ExploreiPhoneApp.swift in Sources */,
+				A085403630A97013001D6981 /* HomeView.swift in Sources */,
+				A085400C30A95AAC001D6981 /* ExploreiPhoneApp.swift in Sources */,
 				A0FBA4543097C816002B52BE /* FeaturesView.swift in Sources */,
+				A085401630A95F52001D6981 /* ExploreMode.swift in Sources */,
+				A085403430A96F4D001D6981 /* PricingView.swift in Sources */,
 				A0FBA47E3098349D002B52BE /* ExploreNotification.swift in Sources */,
-				A0FBA48A309969BB002B52BE /* CompareView.swift in Sources */,
+				A085403230A96F45001D6981 /* PhoneArt.swift in Sources */,
 				A0FBA48C30996A95002B52BE /* IdleScreensaver.swift in Sources */,
-				A0FBA45E3097D592002B52BE /* Theme.swift in Sources */,
 				A068B4D4309972FD00A835FA /* SettingsTrigger.swift in Sources */,
-				A0FBA48230996928002B52BE /* ModelPhotos.swift in Sources */,
-				A0FBA48830996963002B52BE /* SettingsView.swift in Sources */,
-				A0FBA4863099695C002B52BE /* PricingView.swift in Sources */,
+				A06F09FA309A81F70047FC92 /* CompareView.swift in Sources */,
+				A085400E30A95E68001D6981 /* SettingsView.swift in Sources */,
+				A085401430A95E7D001D6981 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,12 +503,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Explore/Preview Content\"";
 				DEVELOPMENT_TEAM = 42HFQ4V5AM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Explore;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -514,11 +524,15 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nuggets.ist.DemoDiscoveryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ExploreUITests/Explore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -528,12 +542,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Explore/Preview Content\"";
 				DEVELOPMENT_TEAM = 42HFQ4V5AM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Explore;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -547,10 +563,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nuggets.ist.DemoDiscoveryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ExploreUITests/Explore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
