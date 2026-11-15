@@ -90,4 +90,4 @@ iPhone 15 Pro, 15 Pro Max, 15, 15 Plus, 14 Pro, 14 Pro Max, 14, 14 Plus, 13, and
 
 ## License
 
-©Copyright 2026 NuggetTechTT. Product images belong to Apple Inc.
+© Copyright 2026 NuggetTechTT. Product images belong to Apple Inc.
